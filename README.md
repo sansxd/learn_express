@@ -1,4 +1,4 @@
-"# learn express with mongodb to create API "
+"# learn express with mongodb to create API with JWT "
 clonar repositorio
 npm install
 npm run dev
