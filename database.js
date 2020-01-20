@@ -6,7 +6,8 @@ const uri = process.env.DB_URI;
 export async function conexion() {
   try {
     await mongoose.connect(uri, {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     });
     console.log('conectado a DB de mongodb atlas');
   } catch (error) {

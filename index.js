@@ -1,7 +1,11 @@
+require('dotenv').config()
 //importando express
 import express from 'express';
+const port = process.env.PORT;
+const morgan = require('morgan');
+const cors = require('cors');
 const app = express();
-const port = 3000;
+
 import { conexion } from './database';
 
 //importacion de rutas
@@ -12,6 +16,8 @@ import tareasRoute from './routes/tareas';
 conexion();
 
 //middleware
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 app.get('/', function(request, response) {
   console.log(request.body); // your JSON

@@ -1,9 +1,9 @@
 import rutador from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-
-const router = rutador.Router();
 import Usuario from '../model/user';
+const router = rutador.Router();
+
 const { registerValidation, loginValidation } = require('../validation');
 
 //metodo post de registro de usuario
@@ -52,18 +52,6 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign({ _id: validarUsuario._id }, process.env.TOKEN_SECRET);
   res.header('auth-token', token).send(token);
 
-  // //creacion de usuario
-  // const usuario = new Usuario({
-  //   name: req.body.name,
-  //   email: req.body.email,
-  //   password: hashpass
-  // });
-  // try {
-  //   const usuarioGuardado = await usuario.save();
-  //   res.send({ usuario: usuario._id });
-  // } catch (error) {
-  //   res.status(400).send(error);
-  // }
 });
 
 module.exports = router;
